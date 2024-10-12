@@ -1,38 +1,57 @@
 <script>
 import WorkItem from "@/components/WorkItem.vue"
 
-import work1 from "@/assets/worksImages/work1.jpg"
-import work2 from "@/assets/worksImages/work2.jpg"
-import work3 from "@/assets/worksImages/work3.jpg"
-import work4 from "@/assets/worksImages/work4.jpg"
-
-
-
-export default{
+export default {
   components:{
     WorkItem
   },
-  data(){
-    return{
-      workitems:[
-        {id:1,title:'Bookcover Design1',description:'this is a photo',src: work1},
-        {id:2,title:'Bookcover Design2',description:'nihao',src: work2},
-        {id:3,title:'Bookcover Design3',description:'nihao',src: work3},
-        {id:4,title:'Bookcover Design4',description:'nihao',src: work4},
-      ]
-    }
-  },
-  created(){
-    let workImagesList = import.meta.glob('@/assets/worksImages/*.*');
-    
 
+  data() {
+    return {
+      workItems: [] // 存储图片的名称和路径的数组
+    };
+  },
+  async created() {
+    // 调用函数加载图片并存储图片名和路径
+    await this.loadImages();
+  },
+  methods: {
+    async loadImages() {
+      // 使用 import.meta.glob 动态导入 images 文件夹中的图片
+      const imageModules = import.meta.glob('@/assets/worksImages/*.{png,jpg,jpeg,svg}');
+
+      // 等待所有图片路径的 Promise 解析
+      const workItems = await Promise.all(
+        Object.keys(imageModules).map(async (path) => {
+          // 提取文件名（去掉路径前缀和扩展名）
+          const fileName = path.split('/').pop().replace(/\.\w+$/, '');
+          
+          const [name,description] = fileName.split('_');
+
+          // 调用 imageModules[path]() 来获取图片的模块
+          const imageModule = await imageModules[path]();
+
+          // 返回一个对象，包含图片的名称和路径
+          return {
+            title:name,  // 图片文件名
+            description: description,
+            src: imageModule.default // 获取解析后的图片路径
+          };
+        })
+      );
+
+      // 将结果存储到 workItems 数组中
+      this.workItems = workItems;
+
+      console.log('workItems:',workItems)
+    }
   }
-}
+};
 </script>
 
 <template>
   <div class="wrapper">
-    <WorkItem v-for="workitem in workitems" v-bind="workitem"/>
+    <WorkItem v-for="workitem in workItems" v-bind="workitem"/>
   </div>
 </template>
 
