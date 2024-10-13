@@ -5,7 +5,6 @@
       width="250px"
       max-height="500px"
       :src= "src"
-      lazy-src="true"
     >
     <v-card-subtitle class="description-overlay"> {{ description }}</v-card-subtitle>
     </v-img>

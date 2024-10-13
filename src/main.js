@@ -7,6 +7,7 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 // import App from './App.vue'
 import WorksApp from './views/Works.vue'
+import PhotoApp from './views/Photos.vue'
 
 const vuetify = createVuetify({
     components,
@@ -14,6 +15,8 @@ const vuetify = createVuetify({
 })
 
 const workapp = createApp(WorksApp)
-
-
 workapp.use(vuetify).mount('#app-works')
+
+
+const photoapp = createApp(PhotoApp)
+photoapp.use(vuetify).mount('#app-photos')
