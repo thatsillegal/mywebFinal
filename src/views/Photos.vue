@@ -3,7 +3,7 @@
         <!-- 还没有把图片绑定上去 -->
         <div class="photo-frame">
             <div class="photo-container">
-                <img src="" alt="">
+                <img :src="photos[currentPhotoIndex].src" alt="等待加载">
             </div>
             <div class="controls">
                 <button @click="prevPhoto">prev</button>
@@ -17,7 +17,8 @@
     export default{
         data(){
             return {
-                photos:[] // 存储所有的图片，获取方法和worksItem一样
+                photos:[], // 存储所有的图片，获取方法和worksItem一样
+                currentPhotoIndex:0,
             }
         },
         async created() {
@@ -52,9 +53,10 @@
                 // 将结果存储到 workItems 数组中
                 this.photos = allphotos;
 
-                console.log('photos:',allphotos)
+                
             },
             nextPhoto() {
+                console.log('photos:',this.photos[this.currentPhotoIndex].src)
                 if (this.currentPhotoIndex < this.photos.length - 1) {
                     this.currentPhotoIndex += 1;
                 } else {
@@ -75,7 +77,36 @@
 <style scoped>
   .wrapper{
     width: 100vw;
-    height:100vh;
-    padding:35px 10px 10px 10px; 
+    height:100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .photo-frame{
+    display: flex;
+    justify-content: center;
+    height:100%;
+    width:100%;
+  }
+  .photo-container{
+    height: 80vh;
+    width:auto;
+    padding:10vh; /*上下都留了10vh */
+  }
+  img{
+    display:inline-block
+  }
+  .controls{
+    width:100%;
+    position: absolute;
+    bottom:30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  button{
+    margin:0px 10px
   }
 </style>
