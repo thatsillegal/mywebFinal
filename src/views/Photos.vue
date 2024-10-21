@@ -3,8 +3,24 @@
         <!-- 还没有把图片绑定上去 -->
         <div class="photo-frame">
             <div class="photo-container">
-                <img :src="photos[currentPhotoIndex].src" alt="等待加载">
+                <img 
+                    class="fit-picture"
+                    ref="image"
+                    :src="photos[currentPhotoIndex].src" 
+                    alt="loading..."
+                    @load="onImageLoad" 
+                />
+                <v-card :style="cardStyle">
+                    <p style="font:italic uppercase normal 12px/0.5 'Arial', 'Helvetica', sans-serif">
+                        {{ photos[currentPhotoIndex].title }}
+                    </p>
+                    <p style="font:italic small-caps normal 12px 'Arial', 'Helvetica', sans-serif">
+                        {{ photos[currentPhotoIndex].description }}
+                    </p>
+                </v-card>
             </div>
+
+
             <div class="controls">
                 <button @click="prevPhoto">prev</button>
                 <button @click="nextPhoto">next</button>
@@ -14,11 +30,22 @@
 </template>
 
 <script>
+    import loadingImage from '@/assets/lazyload_loading.webp';
+
     export default{
         data(){
             return {
                 photos:[], // 存储所有的图片，获取方法和worksItem一样
                 currentPhotoIndex:0,
+                loadingImage,
+                cardStyle:{
+                    padding:"10px",
+                    left:"10px",
+                    bottom:"10px",
+                    position: "absolute",
+                    elevation:"16px",
+                    "max-width":"10vw",
+                },
             }
         },
         async created() {
@@ -56,25 +83,52 @@
                 
             },
             nextPhoto() {
-                console.log('photos:',this.photos[this.currentPhotoIndex].src)
                 if (this.currentPhotoIndex < this.photos.length - 1) {
                     this.currentPhotoIndex += 1;
                 } else {
                     this.currentPhotoIndex = 0; // 回到第一张照片
-                }
+                };
             },
             prevPhoto() {
                 if (this.currentPhotoIndex > 0) {
                     this.currentPhotoIndex -= 1;
                 } else {
                     this.currentPhotoIndex = this.photos.length - 1; // 回到最后一张照片
+                };
+            },
+            onImageLoad(){
+                const a = this.$refs.image;
+                if (a instanceof HTMLImageElement){
+                    console.log(" an img ele", a.getBoundingClientRect());
+                }else{
+                    console.log('not valid')
+                }
+
+                console.log(a.height);
+                if(a){
+                    const rect = a.getBoundingClientRect();
+                    this.cardStyle = {
+                        ...this.cardStyle,
+                        left:`${rect.right}px`,
+                        bottom:`${rect.top}px`
+                    }
+                }else{
+                    console.log("a is null")  
                 }
             },
-        }
+        },
     }
 </script>
 
 <style scoped>
+  .fit-picture{
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
   .wrapper{
     width: 100vw;
     height:100vh; 
@@ -89,12 +143,13 @@
     width:100%;
   }
   .photo-container{
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: cneter;
     height: 80vh;
     width:auto;
-    padding:10vh; /*上下都留了10vh */
-  }
-  img{
-    display:inline-block
+    padding:10vh; 
   }
   .controls{
     width:100%;

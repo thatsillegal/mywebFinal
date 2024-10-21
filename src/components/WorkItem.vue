@@ -1,15 +1,19 @@
 <template>
-  <v-card class="mx-auto" max-width="400">
-    <v-img
-      class="img"
-      width="250px"
-      max-height="500px"
-      :src= "src"
-    >
-    <v-card-subtitle class="description-overlay"> {{ description }}</v-card-subtitle>
-    </v-img>
-    <v-card-title class="title"> {{title}} </v-card-title>
-  </v-card>
+  <v-lazy>
+    <v-card class="mx-auto" max-width="400">
+      <v-img
+        class="img"
+        width="250px"
+        max-height="500px"
+        :src= "src"
+      >
+        <v-card-subtitle class="description-overlay"> {{ description }}</v-card-subtitle>
+      </v-img>
+
+      <v-card-title class="title"> {{title}} </v-card-title>
+    </v-card>
+  </v-lazy>
+
 </template>
   
 <script>

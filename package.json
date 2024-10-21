@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "vue": "^3.4.29",
+    "vue-lazyload": "^3.0.0",
     "vuetify": "^3.7.2"
   },
   "devDependencies": {

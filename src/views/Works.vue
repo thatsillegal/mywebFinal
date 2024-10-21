@@ -50,9 +50,12 @@ export default {
 </script>
 
 <template>
-  <div class="wrapper">
-    <WorkItem v-for="workitem in workItems" v-bind="workitem"/>
-  </div>
+
+    <div class="wrapper">
+        <WorkItem v-for="workitem in workItems" v-bind="workitem"/>
+    </div>
+
+
 </template>
 
 <style scoped>
@@ -60,11 +63,12 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: center;
     align-content: flex-start;
     align-items:start;
     gap:20px;
     padding:35px 10px 10px 10px; 
+    overflow-y: auto;
   }
 
   .flex-item{
