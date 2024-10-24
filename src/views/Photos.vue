@@ -55,7 +55,7 @@
         methods: {
             async loadImages() {
                 // 使用 import.meta.glob 动态导入 images 文件夹中的图片
-                const imageModules = import.meta.glob('@/assets/photos/*.{png,jpg,jpeg,svg}');
+                const imageModules = import.meta.glob('@/assets/photos/*.{png,jpg,JPG,jpeg,svg}');
 
                 // 等待所有图片路径的 Promise 解析
                 const allphotos = await Promise.all(

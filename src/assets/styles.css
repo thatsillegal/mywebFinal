@@ -207,107 +207,16 @@ section h2 {
 
 #blog {
     height: 100vh;
-    overflow-x: auto; /* 横向滚动 */
-    white-space: nowrap;
-    padding:20px
-}
-
-.blog-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
+    display:flex;
+    flex-direction: row;
+    margin:80px 20px 20px 20px;
     overflow: hidden;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
 }
 
-.blog-section {
-    display: flex;
-    transition: transform 0.5s ease;
-    width: calc(100% - 80px); /* 减去箭头的宽度（各40px） */
-    margin: 0 40px; /* 两边各留出40px的空间 */
-    height: 100%;
-}
-
-.blog-content {
+.articles{
     min-width: 100%;
     height: 100%;
-    flex-shrink: 0;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
-
-.blog-section h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.blog-section .articles {
-    max-height: 200px; /* 控制文章列表最大高度 */
-    overflow-y: auto;
-}
-
-.enter-view {
-    display: block;
-    text-align: left;
-    cursor: pointer;
-    color: gray; /* 灰色文本 */
-    font-size: 14px; /* 较小的字体尺寸 */
-    text-decoration: none;
-    /* padding: 10px; */
-    /* position: absolute; */
-    /* left: 50%; */
-    /* transform: translateX(-50%); */
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.enter-view:hover {
-    text-decoration: underline; /* 鼠标悬停时显示下划线 */
-}
-
-.blog-content {
-    display: flex;
-    flex-direction: column; /* 纵向排列子元素 */
-    justify-content: space-between;
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
-
-.blog-content h3 {
-    margin: 0;
-    padding-bottom: 10px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.blog-content p {
-    margin: 0;
-    padding-bottom: 10px;
-    font-size: 16px;
-}
-
-.articles {
-    flex-grow: 1; /* 占据剩余的垂直空间 */
-    margin-bottom: 10px;
-    overflow-y: auto; /* 文章列表可滚动 */
-}
-
-.enter-view {
-    display: block;
-    text-align: center;
-    cursor: pointer;
-    color: gray; /* 灰色文本 */
-    font-size: 14px; /* 较小的字体尺寸 */
-    text-decoration: none;
-    padding: 10px;
-    position: relative;
-    margin-top: auto; /* 将查看更多按钮推到最下方 */
-}
-
-.enter-view:hover {
-    text-decoration: underline; /* 鼠标悬停时显示下划线 */
+    background-color: #575757;
 }
