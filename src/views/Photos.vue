@@ -150,6 +150,7 @@
     height: 80vh;
     width:auto;
     padding:10vh; 
+    background-color: #f5f5f5;
   }
   .controls{
     width:100%;

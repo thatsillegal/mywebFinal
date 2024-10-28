@@ -29,6 +29,7 @@ section h2 {
 
 .navbar {
     position: sticky;
+    height:50px;
     top: 0;
     z-index: 1000;
     display: flex;
@@ -174,49 +175,10 @@ section h2 {
     width: 100vw;
 }
 
-.photo-container {
-    flex: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f5f5;
-}
-
-.photo-info {
-    flex: 1;
-    padding: 20px;
-    background-color: #fafafa;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-#photo-title {
-    font-size: 2em;
-    margin: 0;
-    padding-bottom: 10px;
-}
-
-#photo-description {
-    font-size: 1.2em;
-}
-
-
-
 /* Blog Section 样式 */
 
 #blog {
-    height: 100vh;
     display:flex;
-    flex-direction: row;
-    margin:80px 20px 20px 20px;
-    overflow: hidden;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-}
-
-.articles{
-    min-width: 100%;
-    height: 100%;
-    background-color: #575757;
+    height: 100vh;
+    width: 100vw;
 }
