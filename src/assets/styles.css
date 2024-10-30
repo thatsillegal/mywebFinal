@@ -215,3 +215,49 @@ h1::after{
     height: 100vh;
     width: 100vw;
 }
+
+
+/* Footer 样式 */
+.footer {
+    position: fixed;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    background-color:rgba(0, 0, 0, 0.7);
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 在移动设备上隐藏 footer */
+@media (max-width: 768px) {
+    .footer {
+        display: none;
+    }
+}
+
+/* 联系方式样式 */
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.icons{
+    color: white; /* 设置链接颜色与父元素相同 */
+    text-decoration: none; /* 移除下划线 */
+}
+
+.icons:hover{
+    color: #e18112; /* 悬停颜色 */
+    text-decoration: underline; /* 悬停时显示下划线 */
+}

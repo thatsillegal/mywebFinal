@@ -122,7 +122,7 @@
   .controls {
     width: 100%;
     position: absolute;
-    bottom: 30px;
+    bottom: 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
