@@ -13,5 +13,5 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  assetsInclude:['**/*.JPG']
+  assetsInclude: ['**/*.JPG', '**/*.stl', '**/*.obj', '**/*.gltf', '**/*.glb'], // 每种文件类型作为单独项
 })
