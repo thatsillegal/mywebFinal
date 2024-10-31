@@ -55,8 +55,39 @@
                         embedCode: "https://1drv.ms/b/s!AlDXLATEEYkClOlhl-aKsAzkWSA3pw?embed=1&em=2"
                     },
                     {
-                        title: '【个人】海底世界',
+                        title: '【学术】医疗建筑手术区的自动化布局与空间模拟',
                         value: 5,
+                        subtitle:"手术部作为医疗建筑的核心部门，建设成本和使用成本较高，因此其空间效率的提升是业主与建筑师关注的重要问题，其设计过程受到手术室数量、类型、部署位置、建设工艺、管理模式、柱网关系等多方面因素影响，且在设计过程中往往存在多方案比选的过程。手术部设计需满足严格的医疗工艺要求，手术区（各类手术间及其辅助空间）是手术部中对医疗工艺要求最为严格的区域，具有较强的功能性与规则性。",
+                        embedCode: "https://1drv.ms/w/s!AlDXLATEEYkClOlwCt-n3AroxVrXQA?embed=1&em=2"
+                    },
+                    
+                    {
+                        title: '【动画】手术室自动化布局',
+                        value: 6,
+                        subtitle:" ",
+                        embedCode: "https://1drv.ms/v/s!AlDXLATEEYkClOlvY8x-92RI4twk2g?embed=1"
+                    },
+                    {
+                        title: '【动画】住院病房自动化布局',
+                        value: 7,
+                        subtitle:" ",
+                        embedCode: "https://1drv.ms/v/s!AlDXLATEEYkClOltkilg9m0Re8i5iw?embed=1"
+                    },
+                    {
+                        title: '【动画】PCR实验室自动化布局',
+                        value: 8,
+                        subtitle:" ",
+                        embedCode: "https://1drv.ms/w/s!AlDXLATEEYkClORSDcYxyrFHeLKXQQ?embed=1&em=2"
+                    },
+                                        {
+                        title: '【动画】标准诊室自动化布局',
+                        value: 9,
+                        subtitle:" ",
+                        embedCode: "https://1drv.ms/v/s!AlDXLATEEYkClOlupmsAbVVoj4GUPg?embed=1"
+                    },
+                    {
+                        title: '【个人】海底世界',
+                        value: 10,
                         subtitle:"海洋是天空的倒影，从海底来到天上，会是怎样？",
                         embedCode: "https://1drv.ms/w/s!AlDXLATEEYkClORSDcYxyrFHeLKXQQ?embed=1&em=2"
                     }
@@ -80,9 +111,9 @@
 <style scoped>
     .container{
         display: flex;
-        overflow: hidden;
+        overflow: auto;
         height: calc(100vh - 50px);
-        align-items: center;
+        align-items:start;
         justify-content: center;
     }
     .v-list{
