@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "masonry-layout": "^4.2.2",
     "three": "^0.169.0",
     "vue": "^3.4.29",
     "vue-lazyload": "^3.0.0",

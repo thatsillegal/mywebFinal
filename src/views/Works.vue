@@ -1,18 +1,13 @@
 <template>
-  <div class="wrapper">
-    <WorkItem
-      v-for="workitem in workItems"
-      :key="workitem.title"
-      :title="workitem.title"
-      :description="workitem.description"
-      :src="workitem.coverSrc"
-      @click="openModal(workitem)"
-    />
+  <div class="wrapper" ref="wrapper">
+    <WorkItem class="work-item" ref="work-item" v-for="workitem in workItems" :key="workitem.title"
+      :title="workitem.title" :description="workitem.description" :src="workitem.coverSrc"
+      @click="openModal(workitem)" />
 
     <!-- 弹窗模态框 -->
-    <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal"> 
-      <div class="modal-content">  
-        <button class="close-button" @click="closeModal">✕</button> 
+    <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
+      <div class="modal-content">
+        <button class="close-button" @click="closeModal">✕</button>
 
         <div class="model-viewer-container">
           <button @click="prevItem" class="nav-button-prev">◀</button>
@@ -40,6 +35,7 @@
 <script>
 import WorkItem from "@/components/WorkItem.vue";
 import ModelViewer from "@/components/ModelViewer.vue";
+import Masonry from "masonry-layout";
 
 export default {
   components: {
@@ -51,12 +47,29 @@ export default {
       workItems: [],
       isModalOpen: false,
       selectedWorkItem: null,
-      currentIndex: 0
+      currentIndex: 0,
+      masonryInstance: null,
     };
   },
   async created() {
     // 调用函数加载图片并存储图片名和路径
     await this.loadWorks();
+  },
+  mounted() {
+    // 监听窗口大小变化以调整 Masonry 布局
+    window.addEventListener("resize", this.resizeMasonry);
+  },
+  updated() {
+    // 初始化 Masonry 实例
+    this.masonryInstance = new Masonry(this.$refs.wrapper, {
+      itemSelector: ".work-item",
+      columnWidth: ".work-item",
+      gutter: 10,
+      percentPosition: true,
+    });
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.resizeMasonry);
   },
   computed: {
     currentItem() {
@@ -65,35 +78,27 @@ export default {
   },
   methods: {
     async loadWorks() {
-      // 动态导入 works 文件夹中的所有作品子文件夹内容
-      const folderModules = import.meta.glob('@/assets/works/*/*.{png,jpg,jpeg,svg,stl,obj, gltf, glb}');
-
-      // 遍历每个文件路径
+      const folderModules = import.meta.glob('@/assets/works/*/*.{png,jpg,jpeg,svg,stl,obj,gltf,glb}');
       const workItems = {};
 
       await Promise.all(Object.keys(folderModules).map(async (path) => {
         const parts = path.split('/');
-        const folderName = parts[parts.length - 2]; // 获取作品文件夹名
-        const fileName = parts.pop().replace(/\.\w+$/, ''); // 获取文件名并去除扩展名
+        const folderName = parts[parts.length - 2];
+        const fileName = parts.pop().replace(/\.\w+$/, '');
 
-        // 提取作品名称和说明文字
         const [workTitle, workDescription] = folderName.split('_');
         const [name, description] = fileName.split('_');
 
-        // 初始化作品数据结构
         if (!workItems[folderName]) {
           workItems[folderName] = {
             title: workTitle,
             description: workDescription,
             items: [],
-            coverSrc: '' // 初始化封面图片路径
+            coverSrc: ''
           };
         }
 
-        // 获取文件 URL
         const fileModule = await folderModules[path]();
-
-        // 将文件内容加入作品项
         const item = {
           name,
           description,
@@ -102,14 +107,15 @@ export default {
         };
 
         workItems[folderName].items.push(item);
-
-        // 如果还没有封面图片且当前文件是图片类型，设置为封面
         if (!workItems[folderName].coverSrc && item.type != "3D") {
           workItems[folderName].coverSrc = item.src;
         }
       }));
 
       this.workItems = Object.values(workItems);
+      this.$nextTick(() => {
+        this.masonryInstance.layout(); // 在数据加载完成后重新布局
+      });
     },
     openModal(workItem) {
       this.selectedWorkItem = workItem;
@@ -131,21 +137,24 @@ export default {
           (this.currentIndex - 1 + this.selectedWorkItem.items.length) % this.selectedWorkItem.items.length;
       }
     },
+    resizeMasonry() {
+      if (this.masonryInstance) {
+        this.masonryInstance.layout();
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
 .wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content:center;
-  align-content: flex-start;
-  align-items: start;
-  gap: 20px;
-  padding: 35px 10px 10px 10px;
-  overflow-y: auto;
+  width: 100%;
+  /* 这里的 grid 相关样式可以移除，Masonry 会处理布局 */
+}
+
+.work-item {
+  margin-bottom: 10px;
+  /* 可选，根据需要调整 */
 }
 
 /* 模态框覆盖层 */
@@ -202,33 +211,32 @@ export default {
 }
 
 /* 导航按钮样式 */
-.nav-button-prev{
+.nav-button-prev {
   position: absolute;
   background: none;
   border: none;
   font-size: 1.5em;
   cursor: pointer;
   left: 5%;
-  top:50%;
+  top: 50%;
   color: grey;
 }
 
-.nav-button-next{
+.nav-button-next {
   position: absolute;
   background: none;
   border: none;
   font-size: 1.5em;
   cursor: pointer;
-  top:50%;
-  right:5%;
+  top: 50%;
+  right: 5%;
   color: grey;
 }
 
-/* 右侧：描述或菜单栏容器 */ 
-.description-container { 
-  width: 25%; 
-  padding: 30px 30px 10px 10px; 
-  overflow-y: auto; 
-} 
-
+/* 右侧：描述或菜单栏容器 */
+.description-container {
+  width: 25%;
+  padding: 30px 30px 10px 10px;
+  overflow-y: auto;
+}
 </style>
