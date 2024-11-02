@@ -2,13 +2,14 @@
     <div class="wrapper">
         <div class="photo-container" ref="container">
             <img 
+                v-if="photos.length > 0"
+                v-lazy="photos[currentPhotoIndex].src"
                 class="fit-picture"
                 ref="image"
-                :src="photos[currentPhotoIndex].src" 
-                alt="loading..."
+                alt="a beautiful photo"
                 @load="onImageLoad" 
             />
-            <div class="overlay" :style="cardStyle">
+            <div v-if="photos.length > 0" class="overlay" :style="cardStyle">
                 <h3>{{ photos[currentPhotoIndex].title }}</h3>
                 <p>{{ photos[currentPhotoIndex].description }}</p>
             </div>
@@ -21,21 +22,19 @@
 </template>
 
 <script>
-    import loadingImage from '@/assets/lazyload_loading.webp';
 
     export default {
         data() {
             return {
                 photos: [],
                 currentPhotoIndex: 0,
-                loadingImage,
                 cardStyle: {
                     bottom:"0"
                 },
             };
         },
-        async created() {
-            await this.loadImages();
+        created() {
+            this.loadImages();
         },
         methods: {
             async loadImages() {
@@ -53,6 +52,12 @@
                     })
                 );
                 this.photos = allphotos;
+
+                if (this.photos.length === 0) {
+                    console.error("没有加载到任何图片");
+                }else{
+                    this.currentPhotoIndex = 0; // 确保显示第一张图片
+                }
             },
             nextPhoto() {
                 this.currentPhotoIndex = (this.currentPhotoIndex + 1) % this.photos.length;

@@ -19,7 +19,7 @@
 
           <!-- 3D 模型或图片展示区域 -->
           <ModelViewer v-if="currentItem && currentItem.type === '3D'" :modelPath="currentItem.src" />
-          <img v-else-if="currentItem && currentItem.type === 'image'" :src="currentItem.src" alt="Image"
+          <img v-else-if="currentItem && currentItem.type === 'image'" v-lazy="currentItem.src" alt="Image"
             class="image-view" />
 
           <button @click="nextItem" class="nav-button-next">▶</button>
@@ -190,7 +190,7 @@ export default {
   height: 100%;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
+  justify-content: center;
 }
 
 /* 图片样式 */
@@ -208,6 +208,7 @@ export default {
   border: none;
   font-size: 1.5em;
   cursor: pointer;
+  left: 5%;
   top:50%;
   color: grey;
 }
@@ -219,7 +220,7 @@ export default {
   font-size: 1.5em;
   cursor: pointer;
   top:50%;
-  left:95%;
+  right:5%;
   color: grey;
 }
 

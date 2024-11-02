@@ -1,14 +1,14 @@
 <template>
   <v-lazy>
     <v-card class="mx-auto" max-width="400">
-      <v-img
+      <img
         class="img"
         width="250px"
         max-height="500px"
-        :src= "src"
+        v-lazy= "src"
       >
         <v-card-subtitle class="description-overlay"> {{ description }}</v-card-subtitle>
-      </v-img>
+      </img>
 
       <v-card-title class="title"> {{title}} </v-card-title>
     </v-card>
