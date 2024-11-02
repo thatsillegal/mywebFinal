@@ -1,78 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>个人博客</title>
-    <link rel="stylesheet" href="./src/assets/styles.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="./src/assets/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <nav class="navbar">
-        <ul>
-            <li><a href="#home">首页</a></li>
-            <li><a href="#about">关于我</a></li>
-            <li><a href="#works">作品</a></li>
-            <li><a href="#photography-section">摄影</a></li>
-            <li><a href="#blog">博客</a></li>
-        </ul>
+      <ul>
+        <li><a href="#home">首页</a></li>
+        <li><a href="#about">关于我</a></li>
+        <li><a href="#works">作品</a></li>
+        <li><a href="#photography-section">摄影</a></li>
+        <li><a href="#blog">博客</a></li>
+      </ul>
     </nav>
 
     <section id="home">
-        <div class="hero-image">
-            <div class="hero-text">
-                <h1 class="title">欢迎来到我的博客</h1>
-                <p>分享我的生活与思考</p>
-            </div>
+      <div class="hero-image">
+        <div class="hero-text">
+          <h1 class="title">欢迎来到我的博客</h1>
+          <p>分享我的生活与思考</p>
         </div>
+      </div>
     </section>
 
     <section id="about">
-        <div class="about-bg">
-            <div class="about-textbox">
-                <div class="about-content">
-                    <p>我是谁？</p>
-                    <p>更多的关于我的信息。</p>
-                    <p>再多一点介绍。</p>
-                </div>
-                <div class="arrow-left">&#9664;</div>
-                <div class="arrow-right">&#9654;</div>
-            </div>
+      <div class="about-bg">
+        <div class="about-textbox">
+          <div class="about-content">
+            <p>
+              你好，朋友！我是一名建筑设计师，在硕士期间主修运算化设计与智能建造。我的研究兴趣广泛覆盖数字化建筑，期间已投1篇SCI论文，并在会议上发表了2篇研究成果，为运算化及智能建造领域的小小添砖加瓦，也算得上是“持之以恒的学术爱好者”。
+            </p>
+            <p>
+              在技术方面，我深入研究了3D打印技术，尤其在混凝土构建中的应用更是深有心得——不论是FDM、光固化还是机械臂打印，都能驾轻就熟。而在编程上，我的武器库也相当丰富：Java、C#、Python、JS一应俱全，再配上HTML、CSS、Vue等前端技术，几乎可以说是“应有尽有、如虎添翼”！
+            </p>
+            <p>
+              此外，我擅长运用Rhino、Grasshopper、SketchUp等建模软件，参与过多个插件开发项目。现阶段，我在一家建筑设计院从事医疗建筑设计，涵盖从方案到施工的全过程。在这条路上探索的过程中，我对医疗建筑的特殊性有了更深刻的理解，也积累了不少实战经验。
+            </p>
+            <p>
+                往下翻，你会看到我更多的作品介绍，更多地东西正在来的路上呢！
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="works">
-        <div id="app-works">
-            <!-- 作品项将通过 JavaScript 动态插入 -->
-        </div>
+      <div id="app-works">
+        <!-- 作品项将通过 JavaScript 动态插入 -->
+      </div>
     </section>
 
     <section id="photography-section">
-        <div id="app-photos" />
+      <div id="app-photos" />
     </section>
-    
+
     <section id="blog">
-        <div id="app-articles"></div>
+      <div id="app-articles"></div>
     </section>
 
     <section class="footer">
-        <div class="contact-container">
-            <ul class="contact-list">
-                <li>
-
-                    <a href="https://github.com/thatsillegal" target="_blank" class="icons">
-                        <span class="material-icons">code</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="mailto:zixuan.peng@gmail.com" class="icons">
-                        <span class="material-icons">email</span>  
-                    </a>
-                </li>
-            </ul>
-        </div>
+      <div class="contact-container">
+        <ul class="contact-list">
+          <li>
+            <a
+              href="https://github.com/thatsillegal"
+              target="_blank"
+              class="icons"
+            >
+              <span class="material-icons">code</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:zixuan.peng@gmail.com" class="icons">
+              <span class="material-icons">email</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </section>
-    
+
     <script type="module" src="/src/main.js"></script>
-</body>
+  </body>
 </html>

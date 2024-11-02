@@ -120,6 +120,8 @@ h1::after{
 
 .about-textbox {
     position: absolute;
+    display: flex;
+    justify-content: center;
     top: 50%;
     right: 5%; /* 将文本框定位在页面的右边 */
     transform: translateY(-50%); /* 只在垂直方向上居中对齐 */
@@ -149,10 +151,20 @@ h1::after{
 }
 
 .about-content{
-    display: inline-block;
-    width: 80%;
-    box-sizing: border-box;
-    color: white; /* 改为白色文字，以便在黑色背景上清晰显示 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "思源黑体", "Microsoft YaHei", "PingFang SC", Helvetica, Arial, sans-serif;
+    width: 100%;
+    font-size: small;
+    font-style: italic;
+    color: rgb(218, 218, 218); /* 改为白色文字，以便在黑色背景上清晰显示 */
+    word-wrap: break-word; 
+    overflow-wrap: break-word; /* 长单词换行 */
+    white-space: normal; /* 换行 */
+    line-height: 1.5; /* 行高 */
+    text-align: justify; /* 两端对齐 */
+    
 }
 
 
