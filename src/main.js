@@ -5,7 +5,16 @@ import * as directives from 'vuetify/directives'
 import WorksApp from './views/Works.vue'
 import PhotoApp from './views/Photos.vue'
 import ArticleApp from './views/Articles.vue'
+import Vue from 'vue'
+import VueLazyload from 'vue-lazyload' //引入这个懒加载插件
 
+
+Vue.use(VueLazyload, {
+    preLoad: 1.3, //预加载高度比例，默认为 1.3
+    error: 'dist/error.png',//请求失败后显示的图片
+    loading: 'dist/loading.gif',//加载的loading过渡图片
+    attempt: 1//尝试加载次数
+})
 
 const vuetify = createVuetify({
     components,
