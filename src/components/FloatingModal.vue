@@ -5,7 +5,7 @@
                 <bold>X</bold>
             </span>
             <!-- 显示传入的内容 -->
-            <iframe :src="content" frameborder='0' scrolling='no'></iframe>
+            <iframe :src="content" frameborder='0' scrolling='no' allowfullscreen></iframe>
         </div>
     </div>
 </template>

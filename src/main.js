@@ -6,12 +6,7 @@ import WorksApp from './views/Works.vue'
 import PhotoApp from './views/Photos.vue'
 import ArticleApp from './views/Articles.vue'
 import VueLazyload from 'vue-lazyload' //引入这个懒加载插件
-
-
-const vuetify = createVuetify({
-    components,
-    directives,
-})
+import vuetify from './plugins/vuetify' // path to vuetify export
 
 const workapp = createApp(WorksApp)
 workapp.use(VueLazyload,{

@@ -64,7 +64,7 @@ export default {
     this.masonryInstance = new Masonry(this.$refs.wrapper, {
       itemSelector: ".work-item",
       columnWidth: ".work-item",
-      gutter: 10,
+      gutter: 5,
       percentPosition: true,
     });
   },
@@ -148,13 +148,30 @@ export default {
 
 <style scoped>
 .wrapper {
+  left: 10px;
+  top: 30px;
   width: 100%;
   /* 这里的 grid 相关样式可以移除，Masonry 会处理布局 */
 }
 
 .work-item {
-  margin-bottom: 10px;
+  width: 18%;
+  margin: 5px;
   /* 可选，根据需要调整 */
+}
+
+@media screen and (max-width: 768px) {
+  .work-item {
+    width: 48%;
+    margin:3px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .work-item {
+    width: 98%;
+    margin: 10px;
+  }
 }
 
 /* 模态框覆盖层 */

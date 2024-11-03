@@ -1,5 +1,4 @@
 <template>
-  <v-lazy>
     <v-card class="mx-auto" max-width="400">
       <img
         class="img"
@@ -7,12 +6,11 @@
         max-height="500px"
         v-lazy= "src"
       >
-        <v-card-subtitle class="description-overlay"> {{ description }}</v-card-subtitle>
+        <v-card-subtitle> {{ description }}</v-card-subtitle>
       </img>
 
       <v-card-title class="title"> {{title}} </v-card-title>
     </v-card>
-  </v-lazy>
 
 </template>
   
@@ -36,6 +34,11 @@
 </script>
 
 <style scoped>
+  .v-card:hover {
+    cursor: pointer; 
+    transform: translate(-5px,-5px); /* 上浮10像素 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.852); /* 增强阴影效果 */
+  }
   .title {
     color:grey;
     text-align: left;
@@ -45,16 +48,17 @@
   .img {
     object-fit: contain; /* 保持原始比例，图片不会被裁剪 */
   }
-  .img:hover .description-overlay{
+  .v-card:hover .v-card-subtitle{
     opacity:1; /* 鼠标悬停时显示 */
+    z-index: 1; /* 置于顶层 */
   }
-  .description-overlay {
+  .v-card-subtitle {
     position: absolute;
-    bottom: 0;
+    top: 0px;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* 半透明背景 */
     color: white;
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
     opacity: 0; /* 默认隐藏 */
     transition: opacity 0.3s ease-in-out; /* 添加平滑过渡效果 */
