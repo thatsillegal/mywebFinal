@@ -212,7 +212,7 @@ h1::after{
 .footer {
     position: fixed;
     bottom: 0;
-    height: 30px;
+    height: 40px;
     width: 100%;
     background-color:rgba(0, 0, 0, 0.7);
     text-align: center;
@@ -241,6 +241,12 @@ h1::after{
     margin: 0;
     display: flex;
     gap: 20px;
+}
+
+.footer li a{
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 
 .icons{

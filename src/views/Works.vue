@@ -192,10 +192,12 @@ export default {
 .modal-content {
   position: relative;
   background: #fff;
+  padding: 10px;
   width: 90vw;
   height: 80vh;
   display: flex;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.616);
+  border-radius: 10px;
 }
 
 /* 关闭按钮 */

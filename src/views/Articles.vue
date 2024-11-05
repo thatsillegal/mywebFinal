@@ -64,32 +64,38 @@ export default {
                     embedCode: "https://1drv.ms/b/s!AlDXLATEEYkClOwy4pymX_lEyEO5Hw?embed=1&em=2"
                 },
                 {
-                    title: '【动画】手术室自动化布局',
+                    title: '【程序】针对医疗建筑开发的Grasshopper插件',
                     value: 6,
+                    subtitle: "开发的电池以及相关的说明",
+                    embedCode: "https://1drv.ms/p/s!AlDXLATEEYkClPFbeqK8Bl9vowOmBA?embed=1&em=2"
+                },
+                {
+                    title: '【动画】手术室自动化布局',
+                    value: 7,
                     subtitle: " ",
                     embedCode: "https://1drv.ms/v/s!AlDXLATEEYkClOlvY8x-92RI4twk2g?embed=1"
                 },
                 {
                     title: '【动画】住院病房自动化布局',
-                    value: 7,
+                    value: 8,
                     subtitle: " ",
                     embedCode: "https://1drv.ms/v/s!AlDXLATEEYkClOltkilg9m0Re8i5iw?embed=1"
                 },
                 {
                     title: '【动画】PCR实验室自动化布局',
-                    value: 8,
+                    value: 9,
                     subtitle: " ",
                     embedCode: "https://1drv.ms/w/s!AlDXLATEEYkClORSDcYxyrFHeLKXQQ?embed=1&em=2"
                 },
                 {
                     title: '【动画】标准诊室自动化布局',
-                    value: 9,
+                    value: 10,
                     subtitle: " ",
                     embedCode: "https://1drv.ms/v/s!AlDXLATEEYkClOlupmsAbVVoj4GUPg?embed=1"
                 },
                 {
                     title: '【个人】海底世界',
-                    value: 10,
+                    value: 11,
                     subtitle: "海洋是天空的倒影，从海底来到天上，会是怎样？",
                     embedCode: "https://1drv.ms/w/s!AlDXLATEEYkClORSDcYxyrFHeLKXQQ?embed=1&em=2"
                 }
